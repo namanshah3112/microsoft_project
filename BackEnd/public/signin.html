@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('https://source.unsplash.com/1920x1080/?travel');
+      background-size: cover;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      width: 300px;
+    }
+    .container h2 {
+      text-align: center;
+      color: #333;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>SIGN IN</h2>
+  <form id="signin-form">
+    <input type="text" id="name" name="name" placeholder="Name" required><br>
+    <input type="text" id="email" name="email" placeholder="Email" required><br>
+    <input type="password" id="password" name="password" placeholder="Password" required><br>
+    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required><br>
+    <span id="password-error" class="error"></span>
+    <input type="submit" value="Sign In">
+  </form>
+  <div class="login-link">
+    <span>Already have an account?</span> <a href="login.html">Login</a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('signin-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirm-password').value;
+    var passwordError = document.getElementById('password-error');
+
+    // Check if password and confirm password match
+    if (password !== confirmPassword) {
+      passwordError.textContent = "Passwords do not match";
+      return;
+    } else {
+      passwordError.textContent = "";
+    }
+
+    // Redirect to overview.html if passwords match
+    window.location.href = 'overview.html';
+  });
+</script>
+
+</body>
+</html>
